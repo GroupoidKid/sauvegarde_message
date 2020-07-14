@@ -3,7 +3,7 @@
 // @namespace    Mountyhall
 // @description  Suvegarde locale du message en cas de déconnexion serveur
 // @author       Dabihul
-// @version      0.0.1.0
+// @version      0.0.2.0
 // @include      */mountyhall/Messagerie/MH_Messagerie.php*
 // @grant        none
 // ==/UserScript==
@@ -22,11 +22,8 @@ function getMessage() {
 	return node.value;
 }
 
-function saveAndValidate(event) {
-	event.stopPropagation();
-	event.preventDefault();
+function saveMessage(event) {
 	window.localStorage['mountyhall.message'] = getMessage();
-	this.submit();
 }
 
 function recallMessage() {
@@ -48,8 +45,7 @@ function alterForm() {
 		window.alert('[Sauvegarde message] Formulaire de messagerie non trouvé');
 		return;
 	}
-	form.setAttribute('onsubmit', 'return true;'); // bypass de ce p***n de check MH alakon
-	form.addEventListener('submit', saveAndValidate, true);
+	form.addEventListener('submit', saveMessage, true);
 }
 
 function addBoutonRappel() {
