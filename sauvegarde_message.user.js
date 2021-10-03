@@ -3,7 +3,7 @@
 // @namespace    Mountyhall
 // @description  Suvegarde locale du message en cas de déconnexion serveur
 // @author       Dabihul
-// @version      0.0.2.0
+// @version      0.0.3.0
 // @include      */mountyhall/Messagerie/MH_Messagerie.php*
 // @grant        none
 // ==/UserScript==
@@ -50,7 +50,7 @@ function alterForm() {
 
 function addBoutonRappel() {
 	let messageTd = document.evaluate(
-		'//form[@name="ComposeMsgForm"]/descendant::td/b[contains(text(), "Message")]/..',
+		'//label[@for="Message"]/..',
 		document, null, 9, null
 	).singleNodeValue;
 	if (!messageTd) {
